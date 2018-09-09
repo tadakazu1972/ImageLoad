@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>画像表示テスト</title>
+</head>
+<body>
+<img src="" id="preview">
+<input type="file" accept="image/*" id="getfile">
+<script>
+var file = document.querySelector('#getfile');
+
+file.onchange = function (){
+  var fileList = file.files;
+  //読み込み
+  var reader = new FileReader();
+  reader.readAsDataURL(fileList[0]);
+
+  //読み込み後
+  reader.onload = function  () {
+    document.querySelector('#preview').src = reader.result;
+  };
+};
+</script>
+</body>
+</html>
